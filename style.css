@@ -751,3 +751,16 @@ footer {
     font-size: 52px;
   }
 }
+.hero-logo {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.hero-logo img {
+  width: 300px;
+  height: auto;
+  display: block;
+}
