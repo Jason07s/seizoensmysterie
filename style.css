@@ -764,3 +764,11 @@ footer {
   height: auto;
   display: block;
 }
+.hero-logo {
+  right: 5%;
+  top: 25%;
+}
+
+.hero-logo img {
+  width: 160px;
+}
