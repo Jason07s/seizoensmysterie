@@ -760,15 +760,29 @@ footer {
 }
 
 .hero-logo img {
-  width: 250px;
+  width: 160px;
   height: auto;
   display: block;
 }
-.hero-logo {
-  right: 15%;
-  top: 35%;
+
+@media (max-width: 800px) {
+  .hero-logo {
+    right: 6%;
+    top: 25%;
+  }
+
+  .hero-logo img {
+    width: 90px;
+  }
 }
 
-.hero-logo img {
-  width: 250px;
+@media (max-width: 500px) {
+  .hero-logo {
+    right: 5%;
+    top: 22%;
+  }
+
+  .hero-logo img {
+    width: 65px;
+  }
 }
