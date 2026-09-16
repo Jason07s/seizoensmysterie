@@ -55,6 +55,9 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
+  font-weight: 700;
+  color: var(--ink);
+  gap: 8px;
 }
 
 .logo img {
@@ -63,10 +66,6 @@ body {
   height: auto;
   max-height: 62px;
   object-fit: contain;
-}
-
-.logo span {
-  font-family: Arial;
 }
 
 .nav-links {
@@ -114,7 +113,7 @@ body {
 }
 
 .hero:after {
-  content: '🍂';
+  content: '🎁';
   position: absolute;
   right: 7%;
   top: 12%;
@@ -145,6 +144,7 @@ body {
   letter-spacing: 3px;
   font-weight: 700;
   margin: 0 0 18px;
+  color: var(--gold);
 }
 
 .hero h1,
@@ -178,7 +178,8 @@ h2 em {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 28px;
+  justify-content: center;
+  gap: 15px;
   background: var(--rust);
   color: #fff;
   text-decoration: none;
@@ -187,15 +188,17 @@ h2 em {
   font: 600 13px 'DM Sans', sans-serif;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
+  width: 100%;
 }
 
 .btn span {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
 }
 
 .btn:hover {
   transform: translateY(-2px);
+  background: #843f27;
 }
 
 .btn-light {
@@ -243,150 +246,119 @@ h2 em {
 }
 
 /* =========================
-   SEASONS
+   WINKEL / SHOP GRID
 ========================= */
 
-.concept {
-  background: var(--cream);
-}
-
-.concept-head {
+.shop-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: end;
-  margin-bottom: 55px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.concept-head p {
-  color: var(--muted);
-  margin: 0;
-}
-
-.season-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.season {
-  min-height: 260px;
-  padding: 28px;
+.product-card {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 4px;
+  text-align: left;
+  border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
-.season:before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    transparent 20%,
-    rgba(0, 0, 0, 0.55)
-  );
+.product-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  margin: 0 0 10px;
+  color: var(--ink);
 }
 
-.season > * {
-  position: relative;
+.product-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
 }
 
-.season span {
-  font-size: 40px;
-  position: absolute;
-  top: 25px;
-  left: 25px;
-}
-
-.season h3 {
-  font: 600 34px 'Cormorant Garamond', serif;
-  margin: 0;
-}
-
-.season p {
-  margin: 2px 0 0;
-  font-size: 13px;
-}
-
-.autumn {
-  background: linear-gradient(135deg, #70402c, #b66a3f);
-}
-
-.winter {
-  background: linear-gradient(135deg, #3b4b57, #8297a4);
-}
-
-.spring {
-  background: linear-gradient(135deg, #61754a, #b3a45c);
-}
-
-.summer {
-  background: linear-gradient(135deg, #c57b34, #e0ae50);
+.product-card .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--rust);
+  margin-bottom: 1rem;
+  display: block;
 }
 
 /* =========================
-   GOLDEN TICKET
+   WINKELMANDJE SECTIE
 ========================= */
 
-.golden {
-  background: #28231f;
-  color: #fff;
-  padding: 100px 0;
+.cart-section {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 2.5rem;
+  border-radius: 4px;
+  margin-top: 4rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
-.golden-card {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 70px;
-  align-items: center;
+.cart-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  margin-bottom: 1.5rem;
 }
 
-.golden .ticket {
-  width: 150px;
-  height: 190px;
-  border: 1px dashed #d1ae68;
+.cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.cart-items li {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+
+.cart-total {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 28px;
+  text-align: right;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.remove-btn {
+  background: none;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #d1ae68;
-  font-size: 55px;
-  transform: rotate(-5deg);
+  margin-left: 15px;
+  transition: all 0.2s ease;
 }
 
-.golden h2 {
-  font: 500 clamp(50px, 6vw, 76px) / 0.9
-    'Cormorant Garamond', serif;
-  margin: 0 0 25px;
+.remove-btn:hover {
+  background: #ff4d4d;
+  color: #fff;
 }
 
-.golden p {
-  max-width: 650px;
-  color: #cfc7ba;
-}
-
-.light {
-  color: #d1ae68;
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta {
-  text-align: center;
-}
-
-.cta .eyebrow {
-  color: var(--rust);
-}
-
-.cta p:not(.eyebrow) {
+#empty-cart-text {
   color: var(--muted);
-  margin: 25px auto 30px;
-  max-width: 560px;
+  font-style: italic;
+  margin: 0;
 }
 
 /* =========================
@@ -394,111 +366,13 @@ h2 em {
 ========================= */
 
 .page-hero {
-  padding: 100px 0 90px;
+  padding: 80px 0 60px;
   background: var(--cream);
+  border-bottom: 1px solid var(--line);
 }
 
 .page-hero h1 {
-  font-size: clamp(55px, 8vw, 90px);
-}
-
-/* =========================
-   PRODUCT
-========================= */
-
-.product {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: center;
-}
-
-.product-image {
-  min-height: 540px;
-  background: linear-gradient(145deg, #e5d5bf, #b87650);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.box-art {
-  width: 260px;
-  height: 320px;
-  background: #3d2c23;
-  color: #d5a95c;
-  box-shadow: 20px 25px 40px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 45px;
-  line-height: 0.8;
-  text-align: center;
-}
-
-.box-art strong {
-  font-weight: 600;
-}
-
-.box-art small {
-  font: 600 11px 'DM Sans', sans-serif;
-  letter-spacing: 3px;
-  margin-top: 25px;
-}
-
-.product-info h2 {
-  font: 500 70px / 0.8
-    'Cormorant Garamond', serif;
-  margin: 0 0 28px;
-}
-
-.product-info p {
-  color: var(--muted);
-}
-
-.product-info .lead {
-  font-size: 18px;
-  color: var(--ink);
-}
-
-.price {
-  font: 600 38px 'Cormorant Garamond', serif;
-  margin: 25px 0 0;
-}
-
-.small {
-  font-size: 11px !important;
-  color: #918a80 !important;
-}
-
-/* =========================
-   FEATURES
-========================= */
-
-.inside {
-  background: var(--cream);
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 60px;
-}
-
-.feature-grid span {
-  color: var(--rust);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.feature-grid h3 {
-  font: 600 32px 'Cormorant Garamond', serif;
-  margin: 12px 0 5px;
-}
-
-.feature-grid p {
-  color: var(--muted);
+  font-size: clamp(45px, 7vw, 75px);
 }
 
 /* =========================
@@ -507,60 +381,29 @@ h2 em {
 
 .contact {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 120px;
+  grid-template-columns: 1fr;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .contact > div > p {
   color: var(--muted);
   max-width: 500px;
-  margin: 30px 0;
+  margin: 20px 0 30px;
 }
 
 .contact-detail {
   border-top: 1px solid var(--line);
-  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
-  max-width: 500px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .contact-detail span {
-  color: var(--muted);
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.contact-form label {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.contact-form input,
-.contact-form textarea {
-  display: block;
-  width: 100%;
-  margin-top: 7px;
-  border: 1px solid var(--line);
-  background: #fff;
-  padding: 14px;
-  font: 14px 'DM Sans', sans-serif;
   color: var(--ink);
-  outline: none;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--rust);
-}
-
-.contact-form textarea {
-  resize: vertical;
+  font-weight: 600;
 }
 
 .contact-hero {
@@ -580,6 +423,7 @@ footer {
   background: #211e1b;
   color: #cfc7ba;
   padding: 35px 0;
+  margin-top: 80px;
 }
 
 .footer-inner {
@@ -606,7 +450,6 @@ footer {
 ========================= */
 
 @media (max-width: 800px) {
-
   .container {
     width: min(100% - 32px, 1120px);
   }
@@ -616,7 +459,7 @@ footer {
   }
 
   .logo img {
-    width: 70px;
+    width: 90px;
     max-height: 45px;
   }
 
@@ -654,43 +497,8 @@ footer {
     max-width: 100%;
   }
 
-  .hero p {
-    font-size: 16px;
-  }
-
-  .two-col,
-  .concept-head,
-  .product,
-  .contact {
+  .shop-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .section {
-    padding: 75px 0;
-  }
-
-  .season-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .golden-card {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .golden .ticket {
-    width: 110px;
-    height: 140px;
-  }
-
-  .feature-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .product-image {
-    min-height: 420px;
   }
 
   .footer-inner {
@@ -701,88 +509,5 @@ footer {
 
   .footer-inner p:last-child {
     margin-left: 0;
-  }
-
-  .page-hero {
-    padding: 75px 0;
-  }
-
-  .product-info h2 {
-    font-size: 58px;
-  }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media (max-width: 500px) {
-
-  .container {
-    width: calc(100% - 28px);
-  }
-
-  .logo img {
-    width: 90px;
-  }
-
-  .hero {
-    min-height: 540px;
-  }
-
-  .hero h1 {
-    font-size: 54px;
-    line-height: 0.9;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .season-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .golden h2 {
-    font-size: 55px;
-  }
-
-  .product-info h2 {
-    font-size: 52px;
-  }
-}
-.hero-logo {
-  position: absolute;
-  right: 8%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-}
-
-.hero-logo img {
-  width: 160px;
-  height: auto;
-  display: block;
-}
-
-@media (max-width: 800px) {
-  .hero-logo {
-    right: 6%;
-    top: 25%;
-  }
-
-  .hero-logo img {
-    width: 90px;
-  }
-}
-
-@media (max-width: 500px) {
-  .hero-logo {
-    right: 5%;
-    top: 22%;
-  }
-
-  .hero-logo img {
-    width: 65px;
   }
 }
