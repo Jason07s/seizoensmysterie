@@ -1,9 +1,217 @@
 <!DOCTYPE html>
-<html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Winkel | Seizoensmysterie</title><meta name="description" content="Ontdek de Mysterie Herfstbox van Seizoensmysterie."><link rel="stylesheet" href="style.css"></head>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winkel | Mysterybox</title>
+    <meta name="description" content="Koop onze unieke mysterieboxen per seizoen.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Extra stijlen specifiek voor de winkel en het winkelmandje */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .product-card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .product-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .product-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .price {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        /* Winkelmandje sectie styling */
+        .cart-section {
+            background: #fff;
+            border: 2px solid #eee;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        .cart-items li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+        .remove-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
 <body>
-<header class="site-header"><nav class="nav container"><a class="logo" href="index.html"><span>🍂</span> Seizoensmysterie</a><button class="menu-toggle" aria-label="Menu openen">☰</button><div class="nav-links"><a href="index.html">Home</a><a class="active" href="winkel.html">Winkel</a><a href="contact.html">Contact</a></div></nav></header>
+<header class="site-header">
+    <nav class="nav container">
+        <a class="logo" href="index.html"><span>🎁</span> Mysterybox</a>
+        <button class="menu-toggle" aria-label="Menu openen">☰</button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a class="active" href="winkel.html">Winkel</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+</header>
+
 <main>
-<section class="page-hero"><div class="container"><p class="eyebrow">ONZE WINKEL</p><h1>Ontdek het<br><em>mysterie.</em></h1></div></section>
-<section class="product section container"><div class="product-image"><div class="box-art">🍂<strong>MYSTERIE<br>BOX</strong><small>HERFST</small></div></div><div class="product-info"><p class="eyebrow">SEIZOEN 01 • HERFST</p><h2>Mysterie<br><em>Herfstbox</em></h2><p class="lead">Een gezellige box vol verrassingen die helemaal in het teken staat van de herfst.</p><p>Het leuke? Je weet vooraf niet precies wat erin zit. Elke box is samengesteld om je te verrassen en de sfeer van de herfst in huis te halen.</p><div class="price">€ XX,XX</div><p class="small">Prijs kan hier worden aangepast zodra jullie definitieve verkoopprijs bekend is.</p><a class="btn" href="contact.html">Bestellen / meer info <span>→</span></a></div></section>
-<section class="inside section"><div class="container"><div class="section-label">Wat mag je verwachten?</div><div class="feature-grid"><div><span>01</span><h3>Een mysterie</h3><p>De exacte inhoud ontdek je pas wanneer je de box opent.</p></div><div><span>02</span><h3>Herfstgevoel</h3><p>Producten en verrassingen die passen bij het seizoen.</p></div><div><span>03</span><h3>Golden Ticket</h3><p>Misschien zit jij bij de gelukkige ontvanger van het extra geschenk.</p></div></div></div></section>
-</main><footer><div class="container footer-inner"><div class="logo">🍂 Seizoensmysterie</div><p>Een mysterie voor elk seizoen.</p><p>© 2026 Seizoensmysterie</p></div></footer><script src="script.js"></script></body></html>
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">ONZE COLLECTIE</p>
+            <h1>Kies jouw<br><em>Mysterybox</em></h1>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="section-label">Seizoensboxen</div>
+        <h2>Vier seizoenen,<br><em>vier mysteries.</em></h2>
+        <p>Elk seizoen heeft zijn eigen unieke sfeer, geuren en verrassingen. Welk seizoen kies jij?</p>
+
+        <!-- Producten Grid (4 Seizoenen) -->
+        <div class="shop-grid" style="margin-top: 2rem;">
+            
+            <div class="product-card">
+                <h3>Lente Mysterybox 🌸</h3>
+                <p>Frisse ontdekkingen en bloemige verrassingen om het nieuwe jaar in te luiden.</p>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addToCart('Lente Mysterybox', 29.99)">In winkelmand</button>
+            </div>
+
+            <div class="product-card">
+                <h3>Zomer Mysterybox ☀️</h3>
+                <p>Zonnige, vrolijke items en unieke goodies voor lange zomerdagen.</p>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addToCart('Zomer Mysterybox', 29.99)">In winkelmand</button>
+            </div>
+
+            <div class="product-card">
+                <h3>Herfst Mysterybox 🍂</h3>
+                <p>Gezellige items, warme tinten en knusse verrassingen voor binnen.</p>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addToCart('Herfst Mysterybox', 29.99)">In winkelmand</button>
+            </div>
+
+            <div class="product-card">
+                <h3>Winter Mysterybox ❄️</h3>
+                <p>Magische, sfeervolle spullen om de koude wintermaanden door te komen.</p>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addToCart('Winter Mysterybox', 29.99)">In winkelmand</button>
+            </div>
+
+        </div>
+
+        <!-- Winkelmandje Sectie -->
+        <div class="cart-section" id="winkelmandje">
+            <h2>Jouw Winkelmandje 🛒</h2>
+            <ul class="cart-items" id="cart-items-list">
+                <p id="empty-cart-text">Je winkelmandje is nog leeg.</p>
+            </ul>
+            <div class="cart-total" id="cart-total" style="display: none;">Totaal: € 0,00</div>
+            <button class="btn" id="checkout-btn" style="display: none;" onclick="checkout()">Afrekenen (Bestellen via e-mail)</button>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <div class="logo">🎁 Mysterybox</div>
+        <p>Een mysterie voor elk seizoen.</p>
+        <p>© 2026 Mysterybox</p>
+    </div>
+</footer>
+
+<!-- JavaScript voor het winkelmandje -->
+<script>
+    let cart = [];
+
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price });
+        updateCartUI();
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const list = document.getElementById('cart-items-list');
+        const totalDiv = document.getElementById('cart-total');
+        const emptyText = document.getElementById('empty-cart-text');
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        list.innerHTML = '';
+
+        if (cart.length === 0) {
+            emptyText.style.display = 'block';
+            totalDiv.style.display = 'none';
+            checkoutBtn.style.display = 'none';
+            return;
+        }
+
+        emptyText.style.display = 'none';
+        totalDiv.style.display = 'block';
+        checkoutBtn.style.display = 'block';
+
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.price;
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${item.name}</span> <span>€ ${item.price.toFixed(2)} <button class="remove-btn" onclick="removeFromCart(${index})">X</button></span>`;
+            list.appendChild(li);
+        });
+
+        totalDiv.innerText = `Totaal: € ${total.toFixed(2)}`;
+    }
+
+    function checkout() {
+        if (cart.length === 0) return;
+        
+        let orderSummary = "Beste,\n\nIk wil graag de volgende mysterybox(en) bestellen:\n\n";
+        cart.forEach(item => {
+            orderSummary += `- ${item.name} (€ ${item.price.toFixed(2)})\n`;
+        });
+        
+        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        orderSummary += `\nTotaalbedrag: € ${total.toFixed(2)}\n\nGraag ontvang ik de betaalgegevens.`;
+
+        // Opent het e-mailprogramma van de bezoeker met de bestelling direct ingevuld naar jou
+        window.location.href = `mailto:heldersorlando@gmail.com?subject=Nieuwe%2520Bestelling%2520Mysterybox&body=${encodeURIComponent(orderSummary)}`;
+    }
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
