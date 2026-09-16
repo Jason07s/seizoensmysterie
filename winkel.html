@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winkel | Mysterybox</title>
-    <meta name="description" content="Koop onze unieke mysterieboxen per seizoen.">
+    <meta name="description" content="Koop onze unieke mysterieboxen per seizoen voor man en vrouw.">
     <link rel="stylesheet" href="style.css">
     <style>
         .product-img-container {
@@ -27,25 +27,6 @@
         .product-card:hover .product-img-container img {
             transform: scale(1.05);
         }
-        .options-group {
-            margin-bottom: 1rem;
-            text-align: left;
-        }
-        .options-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--ink);
-        }
-        .options-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid var(--line);
-            border-radius: 4px;
-            background: #fff;
-            font-family: 'DM Sans', sans-serif;
-        }
         .quantity-controls {
             display: flex;
             align-items: center;
@@ -63,9 +44,54 @@
             display: flex;
             flex-direction: column;
         }
-        .cart-item-details {
+        /* Modal / Pop-up voor klantgegevens bij afrekenen */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .modal-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
             font-size: 13px;
-            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--ink);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+        .btn-secondary {
+            background: var(--muted);
         }
     </style>
 </head>
@@ -92,90 +118,114 @@
 
     <section class="section container">
         <div class="section-label">Seizoensboxen</div>
-        <h2>Vier seizoenen,<br><em>vier mysteries.</em></h2>
-        <p>Kies je seizoen, selecteer of de box voor een man of vrouw is, en bepaal eventueel de hoeveelheid.</p>
+        <h2>Vier seizoenen,<br><em>voor man en vrouw.</em></h2>
+        <p>Kies de specifieke box die bij jouw wensen past en bepaal het aantal.</p>
 
-        <!-- Producten Grid met Opties (4 Seizoenen) -->
+        <!-- Producten Grid: Elke seizoensbox apart voor Man en Vrouw -->
         <div class="shop-grid">
             
-            <!-- Lente -->
+            <!-- 1. Lente Man -->
             <div class="product-card">
-                <div class="product-img-container"><img src="lente.png" alt="Lente Mysterybox"></div>
-                <h3>Lente Mysterybox 🌸</h3>
-                <p>Frisse ontdekkingen en bloemige verrassingen.</p>
-                <div class="options-group">
-                    <label for="lente-type">Voor wie?</label>
-                    <select id="lente-type">
-                        <option value="Vrouw">Vrouw</option>
-                        <option value="Man">Man</option>
-                    </select>
-                </div>
+                <div class="product-img-container"><img src="images/lente.png" alt="Lente Mysterybox Man"></div>
+                <h3>Lente Mysterybox (Man) 🌸</h3>
+                <p>Frisse ontdekkingen en verrassingen specifiek samengesteld voor heren.</p>
                 <div class="quantity-controls">
                     <label style="font-size:13px; font-weight:600;">Aantal:</label>
-                    <input type="number" id="lente-qty" value="1" min="1" max="10">
+                    <input type="number" id="lente-man-qty" value="1" min="1" max="10">
                 </div>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addCustomToCart('Lente Mysterybox', 29.99, 'lente-type', 'lente-qty')">In winkelmand <span>+</span></button>
+                <button class="btn" onclick="addSimpleToCart('Lente Mysterybox (Man)', 29.99, 'lente-man-qty')">In winkelmand <span>+</span></button>
             </div>
 
-            <!-- Zomer -->
+            <!-- 2. Lente Vrouw -->
             <div class="product-card">
-                <div class="product-img-container"><img src="zomer.png" alt="Zomer Mysterybox"></div>
-                <h3>Zomer Mysterybox ☀️</h3>
-                <p>Zonnige, vrolijke items en unieke goodies.</p>
-                <div class="options-group">
-                    <label for="zomer-type">Voor wie?</label>
-                    <select id="zomer-type">
-                        <option value="Vrouw">Vrouw</option>
-                        <option value="Man">Man</option>
-                    </select>
-                </div>
+                <div class="product-img-container"><img src="images/lente.png" alt="Lente Mysterybox Vrouw"></div>
+                <h3>Lente Mysterybox (Vrouw) 🌸</h3>
+                <p>Frisse ontdekkingen en bloemige verrassingen speciaal voor dames.</p>
                 <div class="quantity-controls">
                     <label style="font-size:13px; font-weight:600;">Aantal:</label>
-                    <input type="number" id="zomer-qty" value="1" min="1" max="10">
+                    <input type="number" id="lente-vrouw-qty" value="1" min="1" max="10">
                 </div>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addCustomToCart('Zomer Mysterybox', 29.99, 'zomer-type', 'zomer-qty')">In winkelmand <span>+</span></button>
+                <button class="btn" onclick="addSimpleToCart('Lente Mysterybox (Vrouw)', 29.99, 'lente-vrouw-qty')">In winkelmand <span>+</span></button>
             </div>
 
-            <!-- Herfst -->
+            <!-- 3. Zomer Man -->
             <div class="product-card">
-                <div class="product-img-container"><img src="herfst.png" alt="Herfst Mysterybox"></div>
-                <h3>Herfst Mysterybox 🍂</h3>
-                <p>Gezellige items, warme tinten en knusse verrassingen.</p>
-                <div class="options-group">
-                    <label for="herfst-type">Voor wie?</label>
-                    <select id="herfst-type">
-                        <option value="Vrouw">Vrouw</option>
-                        <option value="Man">Man</option>
-                    </select>
-                </div>
+                <div class="product-img-container"><img src="images/zomer.png" alt="Zomer Mysterybox Man"></div>
+                <h3>Zomer Mysterybox (Man) ☀️</h3>
+                <p>Zonnige, vrolijke items en unieke goodies voor heren.</p>
                 <div class="quantity-controls">
                     <label style="font-size:13px; font-weight:600;">Aantal:</label>
-                    <input type="number" id="herfst-qty" value="1" min="1" max="10">
+                    <input type="number" id="zomer-man-qty" value="1" min="1" max="10">
                 </div>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addCustomToCart('Herfst Mysterybox', 29.99, 'herfst-type', 'herfst-qty')">In winkelmand <span>+</span></button>
+                <button class="btn" onclick="addSimpleToCart('Zomer Mysterybox (Man)', 29.99, 'zomer-man-qty')">In winkelmand <span>+</span></button>
             </div>
 
-            <!-- Winter -->
+            <!-- 4. Zomer Vrouw -->
             <div class="product-card">
-                <div class="product-img-container"><img src="winter.png" alt="Winter Mysterybox"></div>
-                <h3>Winter Mysterybox ❄️</h3>
-                <p>Magische, sfeervolle spullen voor koude maanden.</p>
-                <div class="options-group">
-                    <label for="winter-type">Voor wie?</label>
-                    <select id="winter-type">
-                        <option value="Vrouw">Vrouw</option>
-                        <option value="Man">Man</option>
-                    </select>
-                </div>
+                <div class="product-img-container"><img src="images/zomer.png" alt="Zomer Mysterybox Vrouw"></div>
+                <h3>Zomer Mysterybox (Vrouw) ☀️</h3>
+                <p>Zonnige, vrolijke items en unieke goodies voor dames.</p>
                 <div class="quantity-controls">
                     <label style="font-size:13px; font-weight:600;">Aantal:</label>
-                    <input type="number" id="winter-qty" value="1" min="1" max="10">
+                    <input type="number" id="zomer-vrouw-qty" value="1" min="1" max="10">
                 </div>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addCustomToCart('Winter Mysterybox', 29.99, 'winter-type', 'winter-qty')">In winkelmand <span>+</span></button>
+                <button class="btn" onclick="addSimpleToCart('Zomer Mysterybox (Vrouw)', 29.99, 'zomer-vrouw-qty')">In winkelmand <span>+</span></button>
+            </div>
+
+            <!-- 5. Herfst Man -->
+            <div class="product-card">
+                <div class="product-img-container"><img src="images/herfst.png" alt="Herfst Mysterybox Man"></div>
+                <h3>Herfst Mysterybox (Man) 🍂</h3>
+                <p>Gezellige items, warme tinten en knusse verrassingen voor heren.</p>
+                <div class="quantity-controls">
+                    <label style="font-size:13px; font-weight:600;">Aantal:</label>
+                    <input type="number" id="herfst-man-qty" value="1" min="1" max="10">
+                </div>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addSimpleToCart('Herfst Mysterybox (Man)', 29.99, 'herfst-man-qty')">In winkelmand <span>+</span></button>
+            </div>
+
+            <!-- 6. Herfst Vrouw -->
+            <div class="product-card">
+                <div class="product-img-container"><img src="images/herfst.png" alt="Herfst Mysterybox Vrouw"></div>
+                <h3>Herfst Mysterybox (Vrouw) 🍂</h3>
+                <p>Gezellige items, warme tinten en knusse verrassingen voor dames.</p>
+                <div class="quantity-controls">
+                    <label style="font-size:13px; font-weight:600;">Aantal:</label>
+                    <input type="number" id="herfst-vrouw-qty" value="1" min="1" max="10">
+                </div>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addSimpleToCart('Herfst Mysterybox (Vrouw)', 29.99, 'herfst-vrouw-qty')">In winkelmand <span>+</span></button>
+            </div>
+
+            <!-- 7. Winter Man -->
+            <div class="product-card">
+                <div class="product-img-container"><img src="images/winter.png" alt="Winter Mysterybox Man"></div>
+                <h3>Winter Mysterybox (Man) ❄️</h3>
+                <p>Magische, sfeervolle spullen voor koude maanden voor heren.</p>
+                <div class="quantity-controls">
+                    <label style="font-size:13px; font-weight:600;">Aantal:</label>
+                    <input type="number" id="winter-man-qty" value="1" min="1" max="10">
+                </div>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addSimpleToCart('Winter Mysterybox (Man)', 29.99, 'winter-man-qty')">In winkelmand <span>+</span></button>
+            </div>
+
+            <!-- 8. Winter Vrouw -->
+            <div class="product-card">
+                <div class="product-img-container"><img src="images/winter.png" alt="Winter Mysterybox Vrouw"></div>
+                <h3>Winter Mysterybox (Vrouw) ❄️</h3>
+                <p>Magische, sfeervolle spullen voor koude maanden voor dames.</p>
+                <div class="quantity-controls">
+                    <label style="font-size:13px; font-weight:600;">Aantal:</label>
+                    <input type="number" id="winter-vrouw-qty" value="1" min="1" max="10">
+                </div>
+                <span class="price">€ 29,99</span>
+                <button class="btn" onclick="addSimpleToCart('Winter Mysterybox (Vrouw)', 29.99, 'winter-vrouw-qty')">In winkelmand <span>+</span></button>
             </div>
 
         </div>
@@ -187,11 +237,41 @@
                 <p id="empty-cart-text">Je winkelmandje is nog leeg.</p>
             </ul>
             <div class="cart-total" id="cart-total" style="display: none;">Totaal: € 0,00</div>
-            <button class="btn" id="checkout-btn" style="display: none;" onclick="checkout()">Afrekenen (Bestellen via e-mail) <span>→</span></button>
+            <button class="btn" id="checkout-btn" style="display: none;" onclick="openCheckoutModal()">Definitief Bestellen <span>→</span></button>
         </div>
 
     </section>
 </main>
+
+<!-- Bestelformulier Modal -->
+<div class="modal" id="checkout-modal">
+    <div class="modal-content">
+        <h3>Jouw Gegevens</h3>
+        <p style="font-size: 13px; color: var(--muted); margin-bottom: 1.5rem;">Vul je gegevens in om de bestelling definitief en onherroepelijk te plaatsen.</p>
+        
+        <div class="form-group">
+            <label for="cust-naam">Naam *</label>
+            <input type="text" id="cust-naam" placeholder="Jouw achternaam" required>
+        </div>
+        <div class="form-group">
+            <label for="cust-voornaam">Voornaam *</label>
+            <input type="text" id="cust-voornaam" placeholder="Jouw voornaam" required>
+        </div>
+        <div class="form-group">
+            <label for="cust-email">E-mailadres *</label>
+            <input type="email" id="cust-email" placeholder="jouw@email.be" required>
+        </div>
+        <div class="form-group">
+            <label for="cust-klas">Klas (optioneel)</label>
+            <input type="text" id="cust-klas" placeholder="Bijv. 4A">
+        </div>
+
+        <div class="modal-buttons">
+            <button class="btn" onclick="submitFinalOrder()">Verstuur Bestelling</button>
+            <button class="btn btn-secondary" onclick="closeCheckoutModal()">Annuleren</button>
+        </div>
+    </div>
+</div>
 
 <footer>
     <div class="container footer-inner">
@@ -201,26 +281,21 @@
     </div>
 </footer>
 
-<!-- JavaScript voor geavanceerd winkelmandje -->
+<!-- JavaScript voor winkelmandje en modal -->
 <script>
     let cart = [];
 
-    function addCustomToCart(productName, price, selectId, qtyId) {
-        const typeSelect = document.getElementById(selectId);
+    function addSimpleToCart(productName, price, qtyId) {
         const qtyInput = document.getElementById(qtyId);
-        
-        const selectedType = typeSelect.value;
         const quantity = parseInt(qtyInput.value) || 1;
         
-        // Zoek of exact dezelfde box (zelfde seizoen + zelfde type man/vrouw) al in de mand zit
-        const existingIndex = cart.findIndex(item => item.name === productName && item.type === selectedType);
+        const existingIndex = cart.findIndex(item => item.name === productName);
 
         if (existingIndex > -1) {
             cart[existingIndex].quantity += quantity;
         } else {
             cart.push({
                 name: productName,
-                type: selectedType,
                 price: price,
                 quantity: quantity
             });
@@ -262,7 +337,6 @@
             li.innerHTML = `
                 <div class="cart-item-info">
                     <strong>${item.quantity}x ${item.name}</strong>
-                    <span class="cart-item-details">Variënt: ${item.type}</span>
                 </div>
                 <span>€ ${itemTotal.toFixed(2)} <button class="remove-btn" onclick="removeFromCart(${index})">X</button></span>
             `;
@@ -272,18 +346,40 @@
         totalDiv.innerText = `Totaal: € ${total.toFixed(2)}`;
     }
 
-    function checkout() {
+    function openCheckoutModal() {
         if (cart.length === 0) return;
+        document.getElementById('checkout-modal').style.display = 'flex';
+    }
+
+    function closeCheckoutModal() {
+        document.getElementById('checkout-modal').style.display = 'none';
+    }
+
+    function submitFinalOrder() {
+        const naam = document.getElementById('cust-naam').value.trim();
+        const voornaam = document.getElementById('cust-voornaam').value.trim();
+        const email = document.getElementById('cust-email').value.trim();
+        const klas = document.getElementById('cust-klas').value.trim();
+
+        if (!naam || !voornaam || !email) {
+            alert('Gelieve minstens je Naam, Voornaam en E-mailadres in te vullen.');
+            return;
+        }
+
+        let orderSummary = `Nieuwe definitieve bestelling!\n\nGEGEVENS KLANT:\nNaam: ${voornaam} ${naam}\nE-mail: ${email}`;
+        if (klas) {
+            orderSummary += `\nKlas: ${klas}`;
+        }
         
-        let orderSummary = "Beste,\n\nIk wil graag de volgende mysterybox(en) bestellen:\n\n";
+        orderSummary += `\n\nBESTELLING:\n`;
         cart.forEach(item => {
-            orderSummary += `- ${item.quantity}x ${item.name} (${item.type}) - € ${(item.price * item.quantity).toFixed(2)}\n`;
+            orderSummary += `- ${item.quantity}x ${item.name} (€ ${(item.price * item.quantity).toFixed(2)})\n`;
         });
         
         let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        orderSummary += `\nTotaalbedrag: € ${total.toFixed(2)}\n\nGraag ontvang ik de betaalgegevens.`;
+        orderSummary += `\nTotaalbedrag: € ${total.toFixed(2)}`;
 
-        window.location.href = `mailto:heldersorlando@gmail.com?subject=Nieuwe%20Bestelling%20Mysterybox&body=${encodeURIComponent(orderSummary)}`;
+        window.location.href = `mailto:heldersorlando@gmail.com?subject=Definitieve%20Bestelling%20Mysterybox%20-%20${encodeURIComponent(voornaam + ' ' + naam)}&body=${encodeURIComponent(orderSummary)}`;
     }
 </script>
 
