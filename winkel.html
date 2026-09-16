@@ -155,6 +155,12 @@
         .btn-secondary {
             background: var(--muted);
         }
+
+        /* Standaard onzichtbare mobiele zwevende balk */
+        .mobile-cart-bar {
+            display: none;
+        }
+
         @media (max-width: 950px) {
             .shop-layout {
                 flex-direction: column;
@@ -163,9 +169,37 @@
                 width: 100%;
                 min-width: 100%;
                 position: static;
+                margin-bottom: 60px; /* Ruimte voor de vaste balk onderaan */
             }
             .shop-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Zwevende balk onderaan op gsm wanneer er iets in de mand zit */
+            .mobile-cart-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #28231f;
+                color: #fff;
+                padding: 15px 20px;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 99;
+                box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+                font-weight: 600;
+                font-size: 15px;
+            }
+            .mobile-cart-bar button {
+                background: var(--rust);
+                color: #fff;
+                border: 0;
+                padding: 8px 16px;
+                border-radius: 4px;
+                font-weight: 600;
+                cursor: pointer;
             }
         }
     </style>
@@ -195,7 +229,7 @@
     <section class="section container">
         <div class="section-label">Seizoensboxen</div>
         <h2>Vier seizoenen,<br><em>voor man en vrouw.</em></h2>
-        <p style="margin-bottom: 3rem;">Plaats je boxen in het mandje aan de rechterkant. Betaling gebeurt pas bij afhaling!</p>
+        <p style="margin-bottom: 3rem;">Plaats je boxen in het mandje. Betaling gebeurt pas bij afhaling!</p>
 
         <div class="shop-layout">
             
@@ -324,6 +358,12 @@
     </section>
 </main>
 
+<!-- Zwevende mobiele balk onderaan (alleen zichtbaar op gsm als er iets in de mand zit) -->
+<div class="mobile-cart-bar" id="mobile-cart-bar" style="display: none;">
+    <span id="mobile-cart-text">🛒 0 items (€ 0,00)</span>
+    <button type="button" onclick="scrollToCart()">Bekijk mandje</button>
+</div>
+
 <!-- Bestelformulier Modal voor Afhaling -->
 <div class="modal" id="order-modal">
     <div class="modal-content">
@@ -362,7 +402,6 @@
     </div>
 </footer>
 
-<!-- Onbreekbare localStorage Winkelmand Logica -->
 <script>
     function getCart() {
         try {
@@ -411,26 +450,41 @@
         const totalDiv = document.getElementById('cart-total');
         const emptyText = document.getElementById('empty-cart-text');
         const checkoutBtn = document.getElementById('checkout-btn');
+        const mobileBar = document.getElementById('mobile-cart-bar');
+        const mobileText = document.getElementById('mobile-cart-text');
 
         if (!list) return;
         let cart = getCart();
         list.innerHTML = '';
 
+        let totalItems = 0;
+        let total = 0;
+
+        cart.forEach(item => {
+            totalItems += item.quantity;
+            total += item.price * item.quantity;
+        });
+
         if (cart.length === 0) {
             if (emptyText) emptyText.style.display = 'block';
             if (totalDiv) totalDiv.style.display = 'none';
             if (checkoutBtn) checkoutBtn.style.display = 'none';
+            if (mobileBar) mobileBar.style.display = 'none';
             return;
         }
 
         if (emptyText) emptyText.style.display = 'none';
         if (totalDiv) totalDiv.style.display = 'block';
         if (checkoutBtn) checkoutBtn.style.display = 'block';
+        
+        // Toon mobiele vaste balk indien op gsm en items aanwezig
+        if (window.innerWidth <= 950 && mobileBar) {
+            mobileBar.style.display = 'flex';
+            if (mobileText) mobileText.innerText = `🛒 ${totalItems} item(s) (€ ${total.toFixed(2)})`;
+        }
 
-        let total = 0;
         cart.forEach((item, index) => {
             let itemTotal = item.price * item.quantity;
-            total += itemTotal;
             
             const li = document.createElement('li');
             li.innerHTML = `
@@ -444,6 +498,13 @@
         });
 
         if (totalDiv) totalDiv.innerText = `Totaal: € ${total.toFixed(2)}`;
+    }
+
+    function scrollToCart() {
+        const cartElement = document.getElementById('winkelmandje');
+        if (cartElement) {
+            cartElement.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
     function openOrderModal() {
@@ -486,8 +547,8 @@
         window.location.href = `mailto:heldersorlando@gmail.com?subject=Bestelling%20Afhaling%20Mysterybox%20-%20${encodeURIComponent(voornaam + ' ' + naam)}&body=${encodeURIComponent(orderSummary)}`;
     }
 
-    // Direct laden bij openen van de pagina
     window.addEventListener('DOMContentLoaded', updateCartUI);
+    window.addEventListener('resize', updateCartUI);
 </script>
 
 <script src="script.js"></script>
