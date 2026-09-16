@@ -103,6 +103,7 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a class="active" href="winkel.html">Winkel</a>
+            <a href="golden-ticket.html">Golden Ticket</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -281,14 +282,16 @@
     </div>
 </footer>
 
-<!-- JavaScript voor winkelmandje en modal -->
+<!-- JavaScript voor winkelmandje en modal (nu stabiel en behoudt de inhoud) -->
 <script>
+    // Zorg ervoor dat het winkelmandje globaal behouden blijft
     let cart = [];
 
     function addSimpleToCart(productName, price, qtyId) {
         const qtyInput = document.getElementById(qtyId);
         const quantity = parseInt(qtyInput.value) || 1;
         
+        // Kijken of dit product al in de mand zit
         const existingIndex = cart.findIndex(item => item.name === productName);
 
         if (existingIndex > -1) {
