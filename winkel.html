@@ -7,68 +7,26 @@
     <meta name="description" content="Koop onze unieke mysterieboxen per seizoen.">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Extra stijlen specifiek voor de winkel en het winkelmandje */
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .product-card {
-            background: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .product-card h3 {
-            margin-bottom: 0.5rem;
-        }
-        .product-card p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        .price {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        /* Winkelmandje sectie styling */
-        .cart-section {
-            background: #fff;
-            border: 2px solid #eee;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-        }
-        .cart-items {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 1rem;
-        }
-        .cart-items li {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        .cart-total {
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-align: right;
-            margin-bottom: 1rem;
-        }
-        .remove-btn {
-            background: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 0.2rem 0.5rem;
+        /* Extra stijlen voor de productafbeeldingen in de winkel */
+        .product-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
             border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
+            margin-bottom: 1.2rem;
+            background: #f1ebd9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-img-container img {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -98,35 +56,47 @@
         <h2>Vier seizoenen,<br><em>vier mysteries.</em></h2>
         <p>Elk seizoen heeft zijn eigen unieke sfeer, geuren en verrassingen. Welk seizoen kies jij?</p>
 
-        <!-- Producten Grid (4 Seizoenen) -->
-        <div class="shop-grid" style="margin-top: 2rem;">
+        <!-- Producten Grid met Afbeeldingen (4 Seizoenen) -->
+        <div class="shop-grid">
             
             <div class="product-card">
+                <div class="product-img-container">
+                    <img src="lente.png" alt="Lente Mysterybox">
+                </div>
                 <h3>Lente Mysterybox 🌸</h3>
                 <p>Frisse ontdekkingen en bloemige verrassingen om het nieuwe jaar in te luiden.</p>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addToCart('Lente Mysterybox', 29.99)">In winkelmand</button>
+                <button class="btn" onclick="addToCart('Lente Mysterybox', 29.99)">In winkelmand <span>+</span></button>
             </div>
 
             <div class="product-card">
+                <div class="product-img-container">
+                    <img src="zomer.png" alt="Zomer Mysterybox">
+                </div>
                 <h3>Zomer Mysterybox ☀️</h3>
                 <p>Zonnige, vrolijke items en unieke goodies voor lange zomerdagen.</p>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addToCart('Zomer Mysterybox', 29.99)">In winkelmand</button>
+                <button class="btn" onclick="addToCart('Zomer Mysterybox', 29.99)">In winkelmand <span>+</span></button>
             </div>
 
             <div class="product-card">
+                <div class="product-img-container">
+                    <img src="herfst.png" alt="Herfst Mysterybox">
+                </div>
                 <h3>Herfst Mysterybox 🍂</h3>
                 <p>Gezellige items, warme tinten en knusse verrassingen voor binnen.</p>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addToCart('Herfst Mysterybox', 29.99)">In winkelmand</button>
+                <button class="btn" onclick="addToCart('Herfst Mysterybox', 29.99)">In winkelmand <span>+</span></button>
             </div>
 
             <div class="product-card">
+                <div class="product-img-container">
+                    <img src="winter.png" alt="Winter Mysterybox">
+                </div>
                 <h3>Winter Mysterybox ❄️</h3>
                 <p>Magische, sfeervolle spullen om de koude wintermaanden door te komen.</p>
                 <span class="price">€ 29,99</span>
-                <button class="btn" onclick="addToCart('Winter Mysterybox', 29.99)">In winkelmand</button>
+                <button class="btn" onclick="addToCart('Winter Mysterybox', 29.99)">In winkelmand <span>+</span></button>
             </div>
 
         </div>
@@ -138,7 +108,7 @@
                 <p id="empty-cart-text">Je winkelmandje is nog leeg.</p>
             </ul>
             <div class="cart-total" id="cart-total" style="display: none;">Totaal: € 0,00</div>
-            <button class="btn" id="checkout-btn" style="display: none;" onclick="checkout()">Afrekenen (Bestellen via e-mail)</button>
+            <button class="btn" id="checkout-btn" style="display: none;" onclick="checkout()">Afrekenen (Bestellen via e-mail) <span>→</span></button>
         </div>
 
     </section>
@@ -207,8 +177,7 @@
         let total = cart.reduce((sum, item) => sum + item.price, 0);
         orderSummary += `\nTotaalbedrag: € ${total.toFixed(2)}\n\nGraag ontvang ik de betaalgegevens.`;
 
-        // Opent het e-mailprogramma van de bezoeker met de bestelling direct ingevuld naar jou
-        window.location.href = `mailto:heldersorlando@gmail.com?subject=Nieuwe%2520Bestelling%2520Mysterybox&body=${encodeURIComponent(orderSummary)}`;
+        window.location.href = `mailto:heldersorlando@gmail.com?subject=Nieuwe%20Bestelling%20Mysterybox&body=${encodeURIComponent(orderSummary)}`;
     }
 </script>
 
