@@ -7,7 +7,6 @@
     <meta name="description" content="Koop onze unieke mysterieboxen per seizoen voor man en vrouw.">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Strakke vaste lay-out: Producten links, Winkelmandje rechts */
         .shop-layout {
             display: flex;
             gap: 40px;
@@ -64,8 +63,6 @@
             border: 1px solid var(--line);
             border-radius: 4px;
         }
-
-        /* Vaste rechterzijkant voor het winkelmandje */
         .cart-sidebar {
             width: 340px;
             min-width: 340px;
@@ -110,8 +107,6 @@
             border-top: 2px solid var(--line);
             padding-top: 10px;
         }
-
-        /* Modal / Pop-up voor gegevens bij afhaling */
         .modal {
             display: none;
             position: fixed;
@@ -160,8 +155,6 @@
         .btn-secondary {
             background: var(--muted);
         }
-
-        /* Responsief voor schermen smaller dan 950px */
         @media (max-width: 950px) {
             .shop-layout {
                 flex-direction: column;
@@ -204,13 +197,12 @@
         <h2>Vier seizoenen,<br><em>voor man en vrouw.</em></h2>
         <p style="margin-bottom: 3rem;">Plaats je boxen in het mandje aan de rechterkant. Betaling gebeurt pas bij afhaling!</p>
 
-        <!-- Winkel Indeling: Links producten, Rechts het vaste mandje -->
         <div class="shop-layout">
             
             <div class="shop-grid-container">
                 <div class="shop-grid">
                     
-                    <!-- 1. Lente Man -->
+                    <!-- Lente Man -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/lente.png" alt="Lente Mysterybox Man"></div>
                         <h3>Lente (Man) 🌸</h3>
@@ -220,10 +212,10 @@
                             <input type="number" id="lente-man-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Lente Mysterybox (Man)', 29.99, 'lente-man-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Lente Mysterybox (Man)', 29.99, 'lente-man-qty')">In winkelmand <span>+</span></button>
                     </div>
 
-                    <!-- 2. Lente Vrouw -->
+                    <!-- Lente Vrouw -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/lente.png" alt="Lente Mysterybox Vrouw"></div>
                         <h3>Lente (Vrouw) 🌸</h3>
@@ -233,10 +225,10 @@
                             <input type="number" id="lente-vrouw-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Lente Mysterybox (Vrouw)', 29.99, 'lente-vrouw-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Lente Mysterybox (Vrouw)', 29.99, 'lente-vrouw-qty')">In winkelmand <span>+</span></button>
                     </div>
 
-                    <!-- 3. Zomer Man -->
+                    <!-- Zomer Man -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/zomer.png" alt="Zomer Mysterybox Man"></div>
                         <h3>Zomer (Man) ☀️</h3>
@@ -246,10 +238,10 @@
                             <input type="number" id="zomer-man-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Zomer Mysterybox (Man)', 29.99, 'zomer-man-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Zomer Mysterybox (Man)', 29.99, 'zomer-man-qty')">In winkelmand <span>+</span></button>
                     </div>
 
-                    <!-- 4. Zomer Vrouw -->
+                    <!-- Zomer Vrouw -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/zomer.png" alt="Zomer Mysterybox Vrouw"></div>
                         <h3>Zomer (Vrouw) ☀️</h3>
@@ -259,10 +251,10 @@
                             <input type="number" id="zomer-vrouw-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Zomer Mysterybox (Vrouw)', 29.99, 'zomer-vrouw-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Zomer Mysterybox (Vrouw)', 29.99, 'zomer-vrouw-qty')">In winkelmand <span>+</span></button>
                     </div>
 
-                    <!-- 5. Herfst Man -->
+                    <!-- Herfst Man -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/herfst.png" alt="Herfst Mysterybox Man"></div>
                         <h3>Herfst (Man) 🍂</h3>
@@ -272,10 +264,10 @@
                             <input type="number" id="herfst-man-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Herfst Mysterybox (Man)', 29.99, 'herfst-man-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Herfst Mysterybox (Man)', 29.99, 'herfst-man-qty')">In winkelmand <span>+</span></button>
                     </div>
 
-                    <!-- 6. Herfst Vrouw -->
+                    <!-- Herfst Vrouw -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/herfst.png" alt="Herfst Mysterybox Vrouw"></div>
                         <h3>Herfst (Vrouw) 🍂</h3>
@@ -285,10 +277,10 @@
                             <input type="number" id="herfst-vrouw-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Herfst Mysterybox (Vrouw)', 29.99, 'herfst-vrouw-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Herfst Mysterybox (Vrouw)', 29.99, 'herfst-vrouw-qty')">In winkelmand <span>+</span></button>
                     </div>
 
-                    <!-- 7. Winter Man -->
+                    <!-- Winter Man -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/winter.png" alt="Winter Mysterybox Man"></div>
                         <h3>Winter (Man) ❄️</h3>
@@ -298,10 +290,10 @@
                             <input type="number" id="winter-man-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Winter Mysterybox (Man)', 29.99, 'winter-man-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Winter Mysterybox (Man)', 29.99, 'winter-man-qty')">In winkelmand <span>+</span></button>
                     </div>
 
-                    <!-- 8. Winter Vrouw -->
+                    <!-- Winter Vrouw -->
                     <div class="product-card">
                         <div class="product-img-container"><img src="images/winter.png" alt="Winter Mysterybox Vrouw"></div>
                         <h3>Winter (Vrouw) ❄️</h3>
@@ -311,7 +303,7 @@
                             <input type="number" id="winter-vrouw-qty" value="1" min="1" max="10">
                         </div>
                         <span class="price" style="font-size:22px; font-weight:600; margin-bottom:10px;">€ 29,99</span>
-                        <button type="button" class="btn" onclick="addToCart('Winter Mysterybox (Vrouw)', 29.99, 'winter-vrouw-qty')">In winkelmand <span>+</span></button>
+                        <button type="button" class="btn" onclick="voegToe('Winter Mysterybox (Vrouw)', 29.99, 'winter-vrouw-qty')">In winkelmand <span>+</span></button>
                     </div>
 
                 </div>
@@ -370,35 +362,47 @@
     </div>
 </footer>
 
-<!-- Volledig veilige JavaScript om het mandje en geheugen vast te houden -->
+<!-- Onbreekbare localStorage Winkelmand Logica -->
 <script>
-    // Globale array voor de winkelmand
-    window.cart = window.cart || [];
+    function getCart() {
+        try {
+            return JSON.parse(localStorage.getItem('mystery_cart')) || [];
+        } catch (e) {
+            return [];
+        }
+    }
 
-    function addToCart(productName, price, qtyId) {
+    function saveCart(cart) {
+        localStorage.setItem('mystery_cart', JSON.stringify(cart));
+    }
+
+    function voegToe(productName, price, qtyId) {
         const qtyInput = document.getElementById(qtyId);
         if (!qtyInput) return;
         
         const quantity = parseInt(qtyInput.value) || 1;
+        let cart = getCart();
         
-        // Controleer of dit product reeds in de mand zit
-        const existingIndex = window.cart.findIndex(item => item.name === productName);
+        const existingIndex = cart.findIndex(item => item.name === productName);
 
         if (existingIndex > -1) {
-            window.cart[existingIndex].quantity += quantity;
+            cart[existingIndex].quantity += quantity;
         } else {
-            window.cart.push({
+            cart.push({
                 name: productName,
                 price: price,
                 quantity: quantity
             });
         }
 
+        saveCart(cart);
         updateCartUI();
     }
 
-    function removeFromCart(index) {
-        window.cart.splice(index, 1);
+    function verwijderItem(index) {
+        let cart = getCart();
+        cart.splice(index, 1);
+        saveCart(cart);
         updateCartUI();
     }
 
@@ -409,9 +413,10 @@
         const checkoutBtn = document.getElementById('checkout-btn');
 
         if (!list) return;
+        let cart = getCart();
         list.innerHTML = '';
 
-        if (window.cart.length === 0) {
+        if (cart.length === 0) {
             if (emptyText) emptyText.style.display = 'block';
             if (totalDiv) totalDiv.style.display = 'none';
             if (checkoutBtn) checkoutBtn.style.display = 'none';
@@ -423,7 +428,7 @@
         if (checkoutBtn) checkoutBtn.style.display = 'block';
 
         let total = 0;
-        window.cart.forEach((item, index) => {
+        cart.forEach((item, index) => {
             let itemTotal = item.price * item.quantity;
             total += itemTotal;
             
@@ -433,7 +438,7 @@
                     <strong>${item.quantity}x ${item.name}</strong>
                     <span style="font-size: 12px; color: var(--muted);">€ ${itemTotal.toFixed(2)}</span>
                 </div>
-                <button type="button" class="remove-btn" onclick="removeFromCart(${index})" title="Verwijder" style="background:none; color:#ff4d4d; border:1px solid #ff4d4d; width:22px; height:22px; border-radius:50%; cursor:pointer; font-size:11px; font-weight:bold; display:flex; align-items:center; justify-content:center;">X</button>
+                <button type="button" onclick="verwijderItem(${index})" title="Verwijder" style="background:none; color:#ff4d4d; border:1px solid #ff4d4d; width:22px; height:22px; border-radius:50%; cursor:pointer; font-size:11px; font-weight:bold; display:flex; align-items:center; justify-content:center;">X</button>
             `;
             list.appendChild(li);
         });
@@ -442,7 +447,8 @@
     }
 
     function openOrderModal() {
-        if (window.cart.length === 0) return;
+        let cart = getCart();
+        if (cart.length === 0) return;
         const modal = document.getElementById('order-modal');
         if (modal) modal.style.display = 'flex';
     }
@@ -463,21 +469,25 @@
             return;
         }
 
+        let cart = getCart();
         let orderSummary = `Nieuwe bestelling voor afhaling!\n\nGEGEVENS KLANT:\nNaam: ${voornaam} ${naam}\nE-mail: ${email}`;
         if (klas) {
             orderSummary += `\nKlas: ${klas}`;
         }
         
         orderSummary += `\n\nBESTELLING:\n`;
-        window.cart.forEach(item => {
+        cart.forEach(item => {
             orderSummary += `- ${item.quantity}x ${item.name} (€ ${(item.price * item.quantity).toFixed(2)})\n`;
         });
         
-        let total = window.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         orderSummary += `\nTotaalbedrag te betalen bij afhaling: € ${total.toFixed(2)}`;
 
         window.location.href = `mailto:heldersorlando@gmail.com?subject=Bestelling%20Afhaling%20Mysterybox%20-%20${encodeURIComponent(voornaam + ' ' + naam)}&body=${encodeURIComponent(orderSummary)}`;
     }
+
+    // Direct laden bij openen van de pagina
+    window.addEventListener('DOMContentLoaded', updateCartUI);
 </script>
 
 <script src="script.js"></script>
