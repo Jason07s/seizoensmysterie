@@ -511,3 +511,28 @@ footer {
     margin-left: 0;
   }
 }
+/* QR-code */
+.qr-section {
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.qr-section h2 {
+  margin-bottom: 12px;
+}
+
+.qr-section p {
+  margin-bottom: 25px;
+}
+
+.qr-code {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 12px;
+}
