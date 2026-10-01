@@ -526,14 +526,40 @@ footer {
   margin-bottom: 25px;
 }
 
+/* QR-code bij ons verhaal */
+
+.story-title {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.story-title h2 {
+  margin: 0;
+}
+
 .qr-code {
-  display: block;
-  width: 180px;
-  height: 180px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
-  margin: 0 auto;
-  padding: 10px;
+  padding: 5px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+/* Mobiele versie */
+
+@media (max-width: 700px) {
+
+  .story-title {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .qr-code {
+    width: 70px;
+    height: 70px;
+  }
+
 }
