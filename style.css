@@ -539,12 +539,12 @@ footer {
 }
 
 .qr-code {
-  width: 90px;
-  height: 90px;
+  width: 23px;
+  height: 23px;
   object-fit: contain;
-  padding: 5px;
+  padding: 2px;
   background: #fff;
-  border-radius: 6px;
+  border-radius: 3px;
   flex-shrink: 0;
 }
 
